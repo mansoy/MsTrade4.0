@@ -1,0 +1,61 @@
+object FrmOrderItem: TFrmOrderItem
+  Left = 0
+  Top = 0
+  ActiveControl = btnOk
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = #35746#21333#35814#24773
+  ClientHeight = 338
+  ClientWidth = 286
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 297
+    Width = 286
+    Height = 41
+    Align = alBottom
+    BevelOuter = bvLowered
+    TabOrder = 0
+    ExplicitTop = 245
+    object btnOk: TButton
+      Left = 185
+      Top = 9
+      Width = 75
+      Height = 25
+      Caption = #30830#23450
+      ModalResult = 1
+      TabOrder = 0
+    end
+  end
+  object cxMemo1: TcxMemo
+    Left = 0
+    Top = 0
+    Align = alClient
+    Lines.Strings = (
+      'cxMemo1')
+    ParentFont = False
+    Properties.ReadOnly = True
+    Properties.ScrollBars = ssVertical
+    Style.Color = clBtnFace
+    Style.Font.Charset = GB2312_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -11
+    Style.Font.Name = 'Fixedsys'
+    Style.Font.Style = []
+    Style.Shadow = True
+    Style.IsFontAssigned = True
+    TabOrder = 1
+    ExplicitHeight = 245
+    Height = 297
+    Width = 286
+  end
+end

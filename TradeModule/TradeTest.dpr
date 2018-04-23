@@ -27,7 +27,9 @@ uses
   ManSoy.StrSub in '..\Global\ManSoy.StrSub.pas',
   uMsVpn in '..\Comm\uMsVpn.pas',
   uWinIO in '..\Comm\uWinIO.pas',
-  VMProtectSDK in '..\Comm\VMProtectSDK.pas';
+  VMProtectSDK in '..\Comm\VMProtectSDK.pas',
+  RKUtils in '..\RKDaMa\RKUtils.pas',
+  RKAPI in '..\RKDaMa\RKAPI.pas';
 
 {$R *.res}
 

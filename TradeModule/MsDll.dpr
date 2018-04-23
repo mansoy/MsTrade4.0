@@ -42,7 +42,9 @@ uses
   uMsVpn in '..\Comm\uMsVpn.pas',
   uMemLoadLibrary in '..\Comm\uMemLoadLibrary.pas',
   VMProtectSDK in '..\Comm\VMProtectSDK.pas',
-  uWinIO in '..\Comm\uWinIO.pas';
+  uWinIO in '..\Comm\uWinIO.pas',
+  RKAPI in '..\RKDaMa\RKAPI.pas',
+  RKUtils in '..\RKDaMa\RKUtils.pas';
 
 {$R *.res}
 

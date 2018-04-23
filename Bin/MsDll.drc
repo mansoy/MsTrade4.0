@@ -8,6 +8,25 @@
   resources were bound to the produced executable.
 */
 
+#define Xml_XMLConst_SNoRefresh 64704
+#define Xml_XMLConst_SMissingFileName 64705
+#define Xml_XMLConst_SLine 64706
+#define Xml_XMLConst_SNoMatchingDOMVendor 64720
+#define Xml_XMLConst_SNoDOMNodeEx 64721
+#define Xml_XMLConst_SDOMNotSupported 64722
+#define Xml_XMLConst_SNoDOMVendorSelected 64723
+#define Xml_XMLConst_SNodeExpected 64724
+#define Xml_XMLConst_SMSDOMNotInstalled 64725
+#define Xml_XMLConst_SNotActive 64726
+#define Xml_XMLConst_SNodeNotFound 64727
+#define Xml_XMLConst_SMissingNode 64728
+#define Xml_XMLConst_SNoAttributes 64729
+#define Xml_XMLConst_SInvalidNodeType 64730
+#define Xml_XMLConst_SMismatchedRegItems 64731
+#define Xml_XMLConst_SNotSingleTextNode 64732
+#define Xml_XMLConst_SNoDOMParseOptions 64733
+#define Xml_XMLConst_SMissingItemTag 64734
+#define Xml_XMLConst_SNodeReadOnly 64735
 #define FMX_Consts_SFormatAlreadyRegistered 64736
 #define FMX_Consts_SFormatWasNotRegistered 64737
 #define FMX_Consts_SCannotFindParentBySpecifiedCriteria 64738
@@ -23,6 +42,7 @@
 #define Vcl_Imaging_JConsts_sChangeJPGSize 64748
 #define Vcl_Imaging_JConsts_sJPEGError 64749
 #define Vcl_Imaging_JConsts_sJPEGImageFile 64750
+#define Xml_XMLConst_SDuplicateRegistration 64751
 #define FMX_Consts_SCannotDeleteRow 64752
 #define FMX_Consts_SCellMember 64753
 #define FMX_Consts_SCellSizeType 64754
@@ -809,6 +829,25 @@
 #define System_SysConst_SEndOfFile 65535
 STRINGTABLE
 BEGIN
+	Xml_XMLConst_SNoRefresh,	L"Refresh is only supported if the FileName or XML properties are set"
+	Xml_XMLConst_SMissingFileName,	L"FileName cannot be blank"
+	Xml_XMLConst_SLine,	L"Line"
+	Xml_XMLConst_SNoMatchingDOMVendor,	L"No matching DOM Vendor: \"%s\""
+	Xml_XMLConst_SNoDOMNodeEx,	L"Selected DOM Vendor does not support this property or method"
+	Xml_XMLConst_SDOMNotSupported,	L"Property or Method \"%s\" is not supported by DOM Vendor \"%s\""
+	Xml_XMLConst_SNoDOMVendorSelected,	L"No selected DOM Vendor"
+	Xml_XMLConst_SNodeExpected,	L"Node cannot be null"
+	Xml_XMLConst_SMSDOMNotInstalled,	L"Microsoft MSXML is not installed"
+	Xml_XMLConst_SNotActive,	L"No active document"
+	Xml_XMLConst_SNodeNotFound,	L"Node \"%s\" not found"
+	Xml_XMLConst_SMissingNode,	L"IDOMNode required"
+	Xml_XMLConst_SNoAttributes,	L"Attributes are not supported on this node type"
+	Xml_XMLConst_SInvalidNodeType,	L"Invalid node type"
+	Xml_XMLConst_SMismatchedRegItems,	L"Mismatched paramaters to RegisterChildNodes"
+	Xml_XMLConst_SNotSingleTextNode,	L"Element \"%s\" does not contain a single text node"
+	Xml_XMLConst_SNoDOMParseOptions,	L"DOM Implementation does not support IDOMParseOptions"
+	Xml_XMLConst_SMissingItemTag,	L"ItemTag property is not initialized"
+	Xml_XMLConst_SNodeReadOnly,	L"Node is readonly"
 	FMX_Consts_SFormatAlreadyRegistered,	L"Custom clipboard format with name \"%s\" is already registered"
 	FMX_Consts_SFormatWasNotRegistered,	L"Custom clipboard format with name \"%s\" is not registered"
 	FMX_Consts_SCannotFindParentBySpecifiedCriteria,	L"Cannot find parent by specified criteria"
@@ -824,6 +863,7 @@ BEGIN
 	Vcl_Imaging_JConsts_sChangeJPGSize,	L"Cannot change the size of a JPEG image"
 	Vcl_Imaging_JConsts_sJPEGError,	L"JPEG error #%d"
 	Vcl_Imaging_JConsts_sJPEGImageFile,	L"JPEG Image File"
+	Xml_XMLConst_SDuplicateRegistration,	L"\"%s\" DOMImplementation already registered"
 	FMX_Consts_SCannotDeleteRow,	L"Cannot delete a row that contains controls"
 	FMX_Consts_SCellMember,	L"Member"
 	FMX_Consts_SCellSizeType,	L"Size Type"
@@ -1613,8 +1653,8 @@ END
 /* c:\program files (x86)\embarcadero\studio\19.0\lib\Win32\release\Controls.res */
 /* c:\program files (x86)\embarcadero\studio\19.0\lib\Win32\release\FMX.Filter.res */
 /* c:\program files (x86)\embarcadero\studio\19.0\lib\Win32\release\FMX.Controls.Win.res */
-/* D:\Work\MsTrade4.0\TradeModule\SendMail.res */
-/* D:\Work\MsTrade4.0\TradeModule\uFrmLogs.dfm */
-/* D:\Work\MsTrade4.0\TradeModule\SendMail.res */
-/* D:\Work\MsTrade4.0\TradeModule\MsDll.res */
-/* D:\Work\MsTrade4.0\TradeModule\MsDll.drf */
+/* D:\Work\ManSoy\MsTrade4.0\TradeModule\SendMail.res */
+/* D:\Work\ManSoy\MsTrade4.0\TradeModule\uFrmLogs.dfm */
+/* D:\Work\ManSoy\MsTrade4.0\TradeModule\SendMail.res */
+/* D:\Work\ManSoy\MsTrade4.0\TradeModule\MsDll.res */
+/* D:\Work\ManSoy\MsTrade4.0\TradeModule\MsDll.drf */

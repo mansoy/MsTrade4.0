@@ -143,7 +143,7 @@ type
 {$ENDREGION}
   end;
 
-function DamaForDnfAutoTrade(AUserName: string; APassWord: string; AFileName: string; ADelay: Integer; AType: Integer; var ARetCheckCode: string): Integer; stdcall; external 'ManSoy.Global.dll' name 'DamaForDnfAutoTrade';
+//function DamaForDnfAutoTrade(AUserName: string; APassWord: string; AFileName: string; ADelay: Integer; AType: Integer; var ARetCheckCode: string): Integer; stdcall; external 'ManSoy.Global.dll' name 'DamaForDnfAutoTrade';
 //function QQSafe(AGameID: Integer; AAccount: PAnsiChar; APassWord: PAnsiChar; AArea: PAnsiChar; AServer: PAnsiChar; AMBType: Integer; AKey: PAnsiChar): PAnsiChar; stdcall; external 'QuitSafe.dll';
 //function MsKmPressPassWord(szPassWord: PAnsiChar; dwDelay: DWORD): Boolean; stdcall; external 'MsKm.dll' name 'MsKmPressPassword';
 //function MsKmKeyPress(AKey: WORD; AShift: Boolean = False; ADelay: DWORD = 100): Boolean; stdcall; external 'MsKm.dll' name 'MsKmKeyPress';
@@ -168,7 +168,8 @@ uses
   uJsonClass,
   uLogger,
   uCommand,
-  uTradeClient
+  uTradeClient,
+  RKAPI
   ;
 
 constructor TCommFuns.Create;
@@ -1945,93 +1946,19 @@ end;
 
 {$REGION '外部'}
 function TCommFuns.fnDaMa(ADama2User, ADama2Pwd, AImgFileName: string; ADealyTimes: DWORD): string;
-type
-  //--打码兔返回的验证码信息
-  TDama2Ret = record
-    drCodeText: string;
-    drCodeID  : Integer;
-  end;
-
-//  TD2File = function (pszSoftwareID : LPCSTR;
-//    pszUserName : LPCSTR;
-//    pszUswrPassword : LPCSTR;
-//    pszFileName : LPCSTR;
-//    usTimeout : Word;
-//    ulVCodeTypeID : Longint;
-//    pszVCodeText : LPSTR): Integer;
-//
-//function D2File(
-//    pszSoftwareID : LPCSTR;
-//    pszUserName : LPCSTR;
-//    pszUswrPassword : LPCSTR;
-//    pszFileName : LPCSTR;
-//    usTimeout : Word;
-//    ulVCodeTypeID : Longint;
-//    pszVCodeText : LPSTR) : Integer;
-//var
-//  hLib: THandle;
-//  PD2File: TD2File;
-//begin
-//  Result := -1;
-//  try
-//    DebugInf('MS - D2File1', []);
-//    hLib := LoadLibrary(PWideChar(GSharedInfo.AppPath + 'CrackCaptchaAPI.dll'));
-//    if hLib <> 0 then
-//    begin
-//      DebugInf('MS - D2File2', []);
-//      @PD2File := GetProcAddress(hLib, 'D2File');
-//      if Assigned(PD2File) then
-//      begin
-//        DebugInf('MS - D2File3', []);
-//        Result := PD2File(pszSoftwareID, pszUserName, pszUswrPassword, pszFileName, usTimeout, ulVCodeTypeID, pszVCodeText);
-//      end;
-//      DebugInf('MS - D2File4', []);
-//      FreeLibrary(hLib);
-//      DebugInf('MS - D2File5', []);
-//    end;
-//  except on E: Exception do
-//    DebugInf('MS - D2File fail[%s]', [E.Message]);
-//  end;
-//end;
-//
-//function DamaForDnfAutoTrade(AUserName: string; APassWord: string; AFileName: string; ADelay: Integer; AType: Integer; var ARetCheckCode: string): Integer;
-//var
-//  iRet: Integer;
-//  szRetCodeText : array[0..100] of AnsiChar;
-//begin
-//  //软件名： DnfDaMa
-//  DebugInf('MS - DamaForDnfAutoTrade1', []);
-//  ZeroMemory(@szRetCodeText, SizeOf(szRetCodeText));
-//  Result := D2File('341ca3be1f86a2c3cd45386239768fcf',
-//      PAnsiChar(AnsiString(AUserName)),
-//      PAnsiChar(AnsiString(APassWord)),
-//      PAnsiChar(AnsiString(AFileName)),
-//      ADelay,
-//      AType,
-//      szRetCodeText
-//      );
-//  ARetCheckCode := string(AnsiString(szRetCodeText));
-//  DebugInf('MS - DamaForDnfAutoTrade2【%d-%s】', [Result, ARetCheckCode]);
-//end;
-
 var
-  iRet: Integer;
-  Dama2Ret: TDama2Ret;
+  ResultCode, ResultId, ResultText: string;
 begin
-  VMProtectBeginUltra(PAnsiChar(AnsiString('fnDaMa')));
-  Dama2Ret.drCodeText := '';
-  Dama2Ret.drCodeID := -1;
   Result := '';
-  iRet := DamaForDnfAutoTrade(
-    ADama2User,
-    ADama2Pwd, AImgFileName
-    ,
-    ADealyTimes,
-    42,
-    Dama2Ret.drCodeText
-    );
-  if iRet < 0 then Exit;
-  Result := Dama2Ret.drCodeText;
+  VMProtectBeginUltra(PAnsiChar(AnsiString('fnDaMa')));
+  if RKCreate('3040', AImgFileName, ResultCode, ResultId, ResultText) then
+  begin
+    Result := ResultCode;
+  end else
+  begin
+    PostLogFile('识别题目失败: %s', [ResultText]);
+    Result := '';
+  end;
   DebugInf('MS - 打码完成', []);
   VMProtectEnd;
 end;

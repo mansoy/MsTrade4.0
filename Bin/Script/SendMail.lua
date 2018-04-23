@@ -1954,7 +1954,6 @@ function fnDispatchOrder()
 end
 
 fnDispatchOrder();
-
 --[[
 function Test()
 	print('开始测试...');
@@ -1979,13 +1978,8 @@ function Test()
 	TLuaFuns:MsSetGameHandle(hGame);
 	print('设置游戏句柄完成');
 	
-	iRet = fnSwitchChannel();
-	if 0 ~= iRet then
-		print('选择收获区服完成')
-	else
-		print('选择收获区服失败')
-	end
+	sCode = TLuaFuns:MsDaMa('CheckCode.bmp', 12);
+	print(string.format('验证码: %s', sCode));
 end
-
-Test();
 --]]
+Test();

@@ -34,7 +34,7 @@ var
 {$endif}
 implementation
 
-uses RKUtils, XMLIntf, XMLDoc;
+uses RKUtils, QJson;
 
 function HTTPGetImage(const AImageURL: string; AResponse: TStream): Boolean;
 var
@@ -126,12 +126,13 @@ end;
 
 function RKRegisterAccount(const AUser, APass, AEMail: string;
   var AResultText: string): Boolean;
-var
-  RespXML: string;
-  Doc: IXMLDocument;
-  RootNode, ResultNode, ErrorNode: IXMLNode;
+//var
+//  RespXML: string;
+//  Doc: IXMLDocument;
+//  RootNode, ResultNode, ErrorNode: IXMLNode;
 begin
   Result := False;
+  {
   AResultText := '未知原因(网络可能有错误)';
   RespXML := HTTPRequestRKRegisterAccount(AUser, APass, AEMail);
   if RespXML = '' then Exit;
@@ -156,6 +157,7 @@ begin
   finally
     Doc := nil;
   end;
+  }
 end;
 
 function HTTPRequestRKInfo(): string;
@@ -173,12 +175,13 @@ begin
 end;
 
 function RKInfo(var AScore, AResultText: string): Boolean;
-var
-  RespXML: string;
-  Doc: IXMLDocument;
-  RootNode, ScoreNode, ErrorNode: IXMLNode;
+//var
+//  RespXML: string;
+//  Doc: IXMLDocument;
+//  RootNode, ScoreNode, ErrorNode: IXMLNode;
 begin
   Result := False;
+  {
   AResultText := '未知原因(网络可能有错误)';
   RespXML := HTTPRequestRKInfo();
   if RespXML = '' then Exit;
@@ -203,6 +206,7 @@ begin
   finally
     Doc := nil;
   end;
+  }
 end;
 
 function HTTPRequestRKRecharge(const ARechargeId, ARechargePassword: string): string;
@@ -221,12 +225,13 @@ end;
 
 function RKRecharge(const ARechargeId, ARechargePassword: string;
   var AResultText: string): Boolean;
-var
-  RespXML: string;
-  Doc: IXMLDocument;
-  RootNode, ResultNode, ErrorNode: IXMLNode;
+//var
+//  RespXML: string;
+//  Doc: IXMLDocument;
+//  RootNode, ResultNode, ErrorNode: IXMLNode;
 begin
   Result := False;
+  {
   AResultText := '未知原因(网络可能有错误)';
   RespXML := HTTPRequestRKRecharge(ARechargeId, ARechargePassword);
   if RespXML = '' then Exit;
@@ -251,6 +256,7 @@ begin
   finally
     Doc := nil;
   end;
+  }
 end;
 
 function HTTPRequestRKReportError(const AErrorId: string): string;
@@ -269,12 +275,13 @@ begin
 end;
 
 function RKReportError(const AErrorId: string; var AResultText: string): Boolean;
-var
-  RespXML: string;
-  Doc: IXMLDocument;
-  RootNode, ResultNode, ErrorNode: IXMLNode;
+//var
+//  RespXML: string;
+//  Doc: IXMLDocument;
+//  RootNode, ResultNode, ErrorNode: IXMLNode;
 begin
   Result := False;
+  {
   AResultText := '未知原因(网络可能有错误)';
   RespXML := HTTPRequestRKReportError(AErrorId);
   if RespXML = '' then Exit;
@@ -299,6 +306,7 @@ begin
   finally
     Doc := nil;
   end;
+  }
 end;
 
 //
@@ -342,7 +350,7 @@ begin
     ParamList.Write(AImageStream.Memory^, AImageStream.Size);
     ParamList.WriteString(Format(SPartEnd, [PartKey]));
     CntType := Format(SContentTypeFormat, [PartKey]);
-    Result := HTTPPost('http://api.ruokuai.com/create.xml', ParamList, CntType,
+    Result := HTTPPost('http://api.ruokuai.com/create.json', ParamList, CntType,
       [hoForceEncodeParams, hoKeepOrigProtocol], 95000);
   finally
     ParamList.Free;
@@ -373,36 +381,30 @@ function RKCreate(const ATypeId: string; AImageStream: TMemoryStream;
   var AResultCode, AResultId, AResultText: string): Boolean; overload;
 var
   RespXML: string;
-  Doc: IXMLDocument;
-  RootNode, ResultNode, IdNode, ErrorNode: IXMLNode;
+  vJson, vIdNode, vErrorNode, vResultNode: TQJson;
 begin
   Result := False;
   AResultText := '未知原因(网络可能有错误)';
   RespXML := HTTPRequestRKCreate(ATypeId, AImageStream);
   if RespXML = '' then Exit;
-
-  Doc := TXMLDocument.Create(nil);
+  vJson := TQJson.Create;
   try
-    Doc.LoadFromXML(RespXML);
-    RootNode := Doc.ChildNodes.FindNode('Root');
-    if (RootNode <> nil) and (RootNode.HasChildNodes) then
+    vJson.Parse(RespXML);
+    vResultNode := vJson.ItemByName('Result');
+    vIdNode := vJson.ItemByName('Id');
+    Result := (vIdNode <> nil) and (vResultNode <> nil);
+    if Result then
     begin
-      ResultNode := RootNode.ChildNodes.FindNode('Result');
-      IdNode := RootNode.ChildNodes.FindNode('Id');
-      Result := (ResultNode <> nil) and (IdNode <> nil);
-      if Result then
-      begin
-        AResultCode := ResultNode.Text;
-        AResultId := IdNode.Text;
-      end else
-      begin
-        ErrorNode := RootNode.ChildNodes.FindNode('Error');
-        if ErrorNode <> nil then
-          AResultText := ErrorNode.Text;
-      end;
+      AResultCode := vResultNode.AsString;
+      AResultId := vIdNode.AsString;
+    end else
+    begin
+      vErrorNode := vJson.ItemByName('Error');
+        if vErrorNode <> nil then
+          AResultText := vErrorNode.AsString;
     end;
   finally
-    Doc := nil;
+    FreeAndNil(vJson);
   end;
 end;
 

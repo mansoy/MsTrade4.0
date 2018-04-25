@@ -1981,5 +1981,6 @@ function Test()
 	sCode = TLuaFuns:MsDaMa('CheckCode.bmp', 12);
 	print(string.format('бщжЄТы: %s', sCode));
 end
---]]
+
 Test();
+--]]

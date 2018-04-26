@@ -1358,7 +1358,7 @@ function fnCheckRoleInfo(ASendNum, IsCheckRole)
 	TLuaFuns:MsPostStatus('ÅĞ¶ÏĞ¯´øÁ¿');
 	if iLevel > 0 then
 		--ÅĞ¶ÏĞ¯´øÁ¿
-		local iCarry = TLuaFuns:MsGetCarryAmount(iLevel);
+		local iCarry = -1; --TLuaFuns:MsGetCarryAmount(iLevel);
 		print(iCarry);
 		print(ASendNum);
 		if iCarry > 0 then

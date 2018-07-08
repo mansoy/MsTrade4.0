@@ -8,41 +8,46 @@
   resources were bound to the produced executable.
 */
 
-#define qjson_SCantMoveToChild 64688
-#define qjson_SConvertError 64689
-#define qjson_SUnsupportVarType 64690
-#define qjson_SBadStringStart 64704
-#define qjson_SBadJsonArray 64705
-#define qjson_SBadJsonObject 64706
-#define qjson_SBadJsonEncoding 64707
-#define qjson_SJsonParseError 64708
-#define qjson_SBadJsonName 64709
-#define qjson_SSupportFloat 64710
-#define qjson_SParamMissed 64711
-#define qjson_SMethodMissed 64712
-#define qjson_SMissRttiTypeDefine 64713
-#define qjson_SUnsupportPropertyType 64714
-#define qjson_SUnknownError 64715
-#define qjson_SCantAttachToSelf 64716
-#define qjson_SCanAttachToNoneContainer 64717
-#define qjson_SCantAttachNoNameNodeToObject 64718
-#define qjson_SNodeNameExists 64719
+#define qjson_SUnknownError 64688
+#define qjson_SCantAttachToSelf 64689
+#define qjson_SCanAttachToNoneContainer 64690
+#define qjson_SCantAttachNoNameNodeToObject 64691
+#define qjson_SNodeNameExists 64692
+#define qjson_SCantMoveToChild 64693
+#define qjson_SConvertError 64694
+#define qjson_SUnsupportVarType 64695
+#define qjson_SBadNameStart 64704
+#define qjson_SBadNameEnd 64705
+#define qjson_SNameNotFound 64706
+#define qjson_SCommentNotSupport 64707
+#define qjson_SUnsupportArrayItem 64708
+#define qjson_SBadStringStart 64709
+#define qjson_SBadJsonArray 64710
+#define qjson_SBadJsonObject 64711
+#define qjson_SBadJsonEncoding 64712
+#define qjson_SJsonParseError 64713
+#define qjson_SBadJsonName 64714
+#define qjson_SSupportFloat 64715
+#define qjson_SParamMissed 64716
+#define qjson_SMethodMissed 64717
+#define qjson_SMissRttiTypeDefine 64718
+#define qjson_SUnsupportPropertyType 64719
 #define FMX_Edit_Win_sInvalidComCtl32 64720
 #define Vcl_Imaging_JConsts_sChangeJPGSize 64721
 #define Vcl_Imaging_JConsts_sJPEGError 64722
 #define Vcl_Imaging_JConsts_sJPEGImageFile 64723
-#define qjson_SBadJson 64724
-#define qjson_SVarNotArray 64725
-#define qjson_SBadConvert 64726
-#define qjson_SCharNeeded 64727
-#define qjson_SEndCharNeeded 64728
-#define qjson_SBadNumeric 64729
-#define qjson_SBadJsonTime 64730
-#define qjson_SBadNameStart 64731
-#define qjson_SBadNameEnd 64732
-#define qjson_SNameNotFound 64733
-#define qjson_SCommentNotSupport 64734
-#define qjson_SUnsupportArrayItem 64735
+#define qtimetypes_SBadPlanMask 64724
+#define qworker_STooFewWorkers 64725
+#define qworker_SMaxMinWorkersError 64726
+#define qworker_STooManyLongtimeWorker 64727
+#define qworker_SBadWaitDoneParam 64728
+#define qjson_SBadJson 64729
+#define qjson_SVarNotArray 64730
+#define qjson_SBadConvert 64731
+#define qjson_SCharNeeded 64732
+#define qjson_SEndCharNeeded 64733
+#define qjson_SBadNumeric 64734
+#define qjson_SBadJsonTime 64735
 #define FMX_Consts_SPresentationProxyCreateError 64736
 #define FMX_Consts_SPresentationProxyClassIsNil 64737
 #define FMX_Consts_SPresentationProxyNameIsEmpty 64738
@@ -845,29 +850,39 @@
 #define System_SysConst_SAccessDenied 65535
 STRINGTABLE
 BEGIN
+	qjson_SUnknownError,	L"\x672a\x77e5\x7684\x9519\x8bef\x3002"
+	qjson_SCantAttachToSelf,	L"\x4e0d\x5141\x8bb8\x81ea\x5df1\x9644\x52a0\x4e3a\x81ea\x5df1\x7684\x5b50\x7ed3\x70b9\x3002"
+	qjson_SCanAttachToNoneContainer,	L"\x4e0d\x80fd\x5c06\x7ed3\x70b9\x9644\x52a0\x5230\x975e\x6570\x7ec4\x548c\x5bf9\x8c61\x7c7b\x578b\x7684\x7ed3\x70b9\x4e0b\x3002"
+	qjson_SCantAttachNoNameNodeToObject,	L"\x4e0d\x80fd\x5c06\x672a\x547d\x540d\x7684\x7ed3\x70b9\x505a\x4e3a\x5bf9\x8c61\x7c7b\x578b\x7684\x5b50\x7ed3\x70b9\x3002"
+	qjson_SNodeNameExists,	L"\x6307\x5b9a\x7684\x7236\x7ed3\x70b9\x4e0b\x5df2\x7ecf\x5b58\x5728\x540d\x4e3a %s \x7684\x5b50\x7ed3\x70b9\x3002"
 	qjson_SCantMoveToChild,	L"\x4e0d\x80fd\x5c06\x81ea\x5df1\x79fb\x52a8\x5230\x81ea\x5df1\x7684\x5b50\x7ed3\x70b9\x4e0b\x9762"
 	qjson_SConvertError,	L"\x65e0\x6cd5\x5c06\x7c7b\x578b %s \x8f6c\x6362\x4e3a %s "
 	qjson_SUnsupportVarType,	L"\x4e0d\x652f\x6301\x7684\x53d8\x4f53\x7c7b\x578b %d \x3002"
+	qjson_SBadNameStart,	L"Json\x540d\x79f0\x5e94\x4ee5'\"'\x5b57\x7b26\x5f00\x59cb\x3002"
+	qjson_SBadNameEnd,	L"Json\x540d\x79f0\x672a\x6b63\x786e\x7ed3\x675f\x3002"
+	qjson_SNameNotFound,	L"\x9879\x76ee\x540d\x79f0\x672a\x627e\x5230\x3002"
+	qjson_SCommentNotSupport,	L"\x4e25\x683c\x6a21\x5f0f\x4e0b\x4e0d\x652f\x6301\x6ce8\x91ca\xff0c\x8981\x89e3\x6790\x5305\x62ec\x6ce8\x91ca\x7684JSON\x5185\x5bb9\xff0c\x8bf7\x5c06StrictJson\x53d8\x91cf\x8bbe\x7f6e\x4e3aFalse\x3002"
+	qjson_SUnsupportArrayItem,	L"\x6dfb\x52a0\x7684\x52a8\x6001\x6570\x7ec4\x7b2c%d\x4e2a\x5143\x7d20\x7c7b\x578b\x4e0d\x53d7\x652f\x6301\x3002"
 	qjson_SBadStringStart,	L"\x4e25\x683c\x683b\x4e0aJSON\x5b57\x7b26\x4e32\x5fc5\x9700\x4ee5\"\x5f00\x59cb\x3002"
 	qjson_SBadJsonArray,	L"%s \x4e0d\x662f\x4e00\x4e2a\x6709\x6548\x7684JSON\x6570\x7ec4\x5b9a\x4e49\x3002"
 	qjson_SBadJsonObject,	L"%s \x4e0d\x662f\x4e00\x4e2a\x6709\x6548\x7684JSON\x5bf9\x8c61\x5b9a\x4e49\x3002"
 	qjson_SBadJsonEncoding,	L"\x65e0\x6548\x7684\x7f16\x7801\xff0c\x7f16\x7801\x53ea\x80fd\x662fUTF-8\xff0cANSI\xff0cUnicode 16 LE\xff0cUnicode 16 BE\x3002"
-	qjson_SJsonParseError,	L"\x7b2c%d\x884c\x7b2c%d\x5217:%s \r\n\x884c:%s"
+	qjson_SJsonParseError,	L"\x7b2c%d\x884c\x7b2c%d\x5217:%s \r\n%s"
 	qjson_SBadJsonName,	L"%s \x4e0d\x662f\x4e00\x4e2a\x6709\x6548\x7684JSON\x5bf9\x8c61\x540d\x79f0\x3002"
 	qjson_SSupportFloat,	L"NaN/+\x221e/-\x221e\x4e0d\x53d7JSON\x89c4\x8303\x652f\x6301\x3002"
 	qjson_SParamMissed,	L"\x53c2\x6570 %s \x540c\x540d\x7684\x7ed3\x70b9\x672a\x627e\x5230\x3002"
 	qjson_SMethodMissed,	L"\x6307\x5b9a\x7684\x51fd\x6570 %s \x4e0d\x5b58\x5728\x3002"
 	qjson_SMissRttiTypeDefine,	L"\x65e0\x6cd5\x627e\x5230 %s \x7684RTTI\x7c7b\x578b\x4fe1\x606f\xff0c\x5c1d\x8bd5\x5c06\x5bf9\x5e94\x7684\x7c7b\x578b\x5355\x72ec\x5b9a\x4e49(\x5982array[0..1] of Byte\x6539\x4e3aTByteArr=array[0..1]\xff0c\x7136\x540e\x7528TByteArr\x58f0\x660e)\x3002"
 	qjson_SUnsupportPropertyType,	L"\x4e0d\x652f\x6301\x7684\x5c5e\x6027\x7c7b\x578b\x3002"
-	qjson_SUnknownError,	L"\x672a\x77e5\x7684\x9519\x8bef\x3002"
-	qjson_SCantAttachToSelf,	L"\x4e0d\x5141\x8bb8\x81ea\x5df1\x9644\x52a0\x4e3a\x81ea\x5df1\x7684\x5b50\x7ed3\x70b9\x3002"
-	qjson_SCanAttachToNoneContainer,	L"\x4e0d\x80fd\x5c06\x7ed3\x70b9\x9644\x52a0\x5230\x975e\x6570\x7ec4\x548c\x5bf9\x8c61\x7c7b\x578b\x7684\x7ed3\x70b9\x4e0b\x3002"
-	qjson_SCantAttachNoNameNodeToObject,	L"\x4e0d\x80fd\x5c06\x672a\x547d\x540d\x7684\x7ed3\x70b9\x505a\x4e3a\x5bf9\x8c61\x7c7b\x578b\x7684\x5b50\x7ed3\x70b9\x3002"
-	qjson_SNodeNameExists,	L"\x6307\x5b9a\x7684\x7236\x7ed3\x70b9\x4e0b\x5df2\x7ecf\x5b58\x5728\x540d\x4e3a %s \x7684\x5b50\x7ed3\x70b9\x3002"
 	FMX_Edit_Win_sInvalidComCtl32,	L"This control requires version 4.70 or greater of COMCTL32.DLL"
 	Vcl_Imaging_JConsts_sChangeJPGSize,	L"Cannot change the size of a JPEG image"
 	Vcl_Imaging_JConsts_sJPEGError,	L"JPEG error #%d"
 	Vcl_Imaging_JConsts_sJPEGImageFile,	L"JPEG Image File"
+	qtimetypes_SBadPlanMask,	L"\x6307\x5b9a\x7684\x5b57\x7b26 %s \x65e0\x6548\x3002"
+	qworker_STooFewWorkers,	L"\x6307\x5b9a\x7684\x6700\x5c0f\x5de5\x4f5c\x8005\x6570\x91cf\x592a\x5c11(\x5fc5\x9700\x5927\x4e8e\x7b49\x4e8e1)\x3002"
+	qworker_SMaxMinWorkersError,	L"\x6307\x5b9a\x7684\x6700\x5c0f\x5de5\x4f5c\x8005\x6570\x91cf\x5927\x4e8e\x6700\x5927\x5de5\x4f5c\x8005\x6570\x91cf\x3002"
+	qworker_STooManyLongtimeWorker,	L"\x4e0d\x80fd\x5141\x8bb8\x592a\x591a\x957f\x65f6\x95f4\x4f5c\x4e1a\x7ebf\x7a0b(\x6700\x591a\x5141\x8bb8\x5de5\x4f5c\x8005\x4e00\x534a)\x3002"
+	qworker_SBadWaitDoneParam,	L"\x672a\x77e5\x7684\x7b49\x5f85\x6b63\x5728\x6267\x884c\x4f5c\x4e1a\x5b8c\x6210\x65b9\x5f0f:%d"
 	qjson_SBadJson,	L"\x5f53\x524d\x5185\x5bb9\x4e0d\x662f\x6709\x6548\x7684JSON\x5b57\x7b26\x4e32\x3002"
 	qjson_SVarNotArray,	L"%s \x7684\x7c7b\x578b\x4e0d\x662f\x6570\x7ec4\x6216\x5bf9\x8c61\x3002"
 	qjson_SBadConvert,	L"%s \x4e0d\x662f\x4e00\x4e2a\x6709\x6548\x7684 %s \x7c7b\x578b\x7684\x503c\x3002"
@@ -875,11 +890,6 @@ BEGIN
 	qjson_SEndCharNeeded,	L"\x5f53\x524d\x4f4d\x7f6e\x9700\x8981Json\x7ed3\x675f\x5b57\x7b26\",]}\"\x3002"
 	qjson_SBadNumeric,	L"\"%s\"\x4e0d\x662f\x6709\x6548\x7684\x6570\x503c\x3002"
 	qjson_SBadJsonTime,	L"\"%s\"\x4e0d\x662f\x4e00\x4e2a\x6709\x6548\x7684\x65e5\x671f\x65f6\x95f4\x503c\x3002"
-	qjson_SBadNameStart,	L"Json\x540d\x79f0\x5e94\x4ee5'\"'\x5b57\x7b26\x5f00\x59cb\x3002"
-	qjson_SBadNameEnd,	L"Json\x540d\x79f0\x672a\x6b63\x786e\x7ed3\x675f\x3002"
-	qjson_SNameNotFound,	L"\x9879\x76ee\x540d\x79f0\x672a\x627e\x5230\x3002"
-	qjson_SCommentNotSupport,	L"\x4e25\x683c\x6a21\x5f0f\x4e0b\x4e0d\x652f\x6301\x6ce8\x91ca\xff0c\x8981\x89e3\x6790\x5305\x62ec\x6ce8\x91ca\x7684JSON\x5185\x5bb9\xff0c\x8bf7\x5c06StrictJson\x53d8\x91cf\x8bbe\x7f6e\x4e3aFalse\x3002"
-	qjson_SUnsupportArrayItem,	L"\x6dfb\x52a0\x7684\x52a8\x6001\x6570\x7ec4\x7b2c%d\x4e2a\x5143\x7d20\x7c7b\x578b\x4e0d\x53d7\x652f\x6301\x3002"
 	FMX_Consts_SPresentationProxyCreateError,	L"Cannot create presentation proxy with nil model or PresentedControl. Use overloaded version of constructor with parameters and pass correct values."
 	FMX_Consts_SPresentationProxyClassIsNil,	L"APresentationProxyClass is nil. Factory cannot register presentation with a nil presentation proxy class."
 	FMX_Consts_SPresentationProxyNameIsEmpty,	L"APresentationName is empty. Factory cannot register presentation with an empty presentation name"
@@ -1685,8 +1695,8 @@ END
 /* c:\program files (x86)\embarcadero\studio\19.0\lib\Win32\release\Controls.res */
 /* c:\program files (x86)\embarcadero\studio\19.0\lib\Win32\release\FMX.Filter.res */
 /* c:\program files (x86)\embarcadero\studio\19.0\lib\Win32\release\FMX.Controls.Win.res */
-/* D:\Work\ManSoy\MsTrade4.0\TradeModule\SendMail.res */
-/* D:\Work\ManSoy\MsTrade4.0\TradeModule\uFrmLogs.dfm */
-/* D:\Work\ManSoy\MsTrade4.0\TradeModule\SendMail.res */
-/* D:\Work\ManSoy\MsTrade4.0\TradeModule\MsDll.res */
-/* D:\Work\ManSoy\MsTrade4.0\TradeModule\MsDll.drf */
+/* D:\Work\MySelf\MsTrade4.0\TradeModule\SendMail.res */
+/* D:\Work\MySelf\MsTrade4.0\TradeModule\uFrmLogs.dfm */
+/* D:\Work\MySelf\MsTrade4.0\TradeModule\SendMail.res */
+/* D:\Work\MySelf\MsTrade4.0\TradeModule\MsDll.res */
+/* D:\Work\MySelf\MsTrade4.0\TradeModule\MsDll.drf */

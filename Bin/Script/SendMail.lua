@@ -350,6 +350,11 @@ function fnSelGameArea()
 			return 0;
 		end
 		
+		X, Y, iRet = TLuaFuns:MsFindImgEx('SvrFill.bmp');
+		if (X ~= -1) and  (Y ~= -1) then
+			TLuaFuns:MsClick(X + 70, Y + 115, 20, 10);
+		end
+				
 		X, Y, iRet = TLuaFuns:MsFindStringEx('您选择的大区延迟过大|该服务器正在维护，无法进入|该服务器已经爆满', 'ffffff-000000');
 		if 0 == iRet then
 			TLuaFuns:MsClick(X + 50, Y + 120, 10, 5);
@@ -1900,6 +1905,8 @@ function fnDispatchOrder()
 	GEachNum = TOrderInfo:GetEachNum();       --此任务交易次数
 	GTaskType = TOrderInfo:GetTaskType();
 	GCapturePath = TOrderInfo:GetCapturePath();
+	
+	TLuaFuns:MsCreateBmp('该服务器已经爆满','SvrFull',255,255,255);
 
 	--如果游戏OnLine，则返回角色界面选取角色
 	local iRet = 0;
@@ -1959,27 +1966,19 @@ function Test()
 	print('开始测试...');
 	--os.execute("start IoPress.exe 1 a2V5YX4hQCMkfiUkfiVeKiYoKCkpeWEiOiIuPzwvLg==");
 	--TLuaFuns:MsPressPassWord(TOrderInfo:GetPassWord());
-	
 	local hGame = 0;
 	local iY = -1; 
 	local iX = -1; 
 	local iRet = -1;
-	TLuaFuns:MsCreateBmp('亡者峡谷','DefChannel',225,197,147);
-	TLuaFuns:MsCreateBmp('交易','Trade_Auction',225,197,147);
-	TLuaFuns:MsCreateBmp('普通区域','GenArea_1',221,197,147);
-	TLuaFuns:MsCreateBmp('普通区域','GenArea_2',255,255,184);
-	TLuaFuns:MsCreateBmp('时空之门','SwitchChannel',200,195,169);
-	TLuaFuns:MsCreateBmp('正在连接服务器','ConSvr',255,255,255);
-	hGame = TLuaFuns:MsFindWindow('地下城与勇士','地下城与勇士');
+	TLuaFuns:MsCreateBmp('该服务器已经爆满','SvrFull',255,255,255);
+	hGame = TLuaFuns:MsFindWindow('','地下城与勇士登录程序');
 	if TLuaFuns:MsIsWindow(hGame) == 0 then
 		print('游戏没有打开');
-		--return;
+		return;
 	end
-	TLuaFuns:MsSetGameHandle(hGame);
+	iX, iY = TLuaFuns:MsFindImgEx('SvrFull.bmp');
+	print(iX, iY);
 	print('设置游戏句柄完成');
-	
-	sCode = TLuaFuns:MsDaMa('CheckCode.bmp', 12);
-	print(string.format('验证码: %s', sCode));
 end
 
 Test();

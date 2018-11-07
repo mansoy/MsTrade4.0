@@ -687,7 +687,7 @@ begin
       Lua_PushInteger(L, RetErr);
       Exit;
     end;
-    bRet := GCommFuns.PressPassWord(vHPwd, vPassWord, 100);
+    bRet := GCommFuns.PressPassWord(vHPwd, vPassWord, 200);
     if not bRet then
     begin
       Lua_PushInteger(L, RetErr);

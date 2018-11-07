@@ -1221,7 +1221,7 @@ function TCommFuns.PressPassWord(AHPwd: HWND; APwd: string; ADealy: Cardinal): B
 begin
   //cmd:= Format('%sIoPress.exe 1 %d %s', [GSharedInfo.AppPath, AHPwd, APwd]);
   //Result := StartProcess(cmd, False);
-  Result := uWinIo.IoPressPwd(APwd);
+  Result := uWinIo.IoPressPwd(APwd, ADealy);
 end;
 (*
   procedure MsKeyPress(bVk: BYTE; bShift: Boolean);

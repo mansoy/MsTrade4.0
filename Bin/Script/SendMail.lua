@@ -336,7 +336,7 @@ function fnSelGameArea()
 	end
 	
 	if not bRet then
-		TLuaFuns:MsPostStatus('选择服务器超时', tsFail);
+		TLuaFuns:MsPostStatus('选择服务器超时01..', tsFail);
 		return 0;
 	end
 	
@@ -350,10 +350,10 @@ function fnSelGameArea()
 			return 0;
 		end
 		
-		X, Y, iRet = TLuaFuns:MsFindImgEx('SvrFill.bmp');
-		if (X ~= -1) and  (Y ~= -1) then
-			TLuaFuns:MsClick(X + 70, Y + 115, 20, 10);
-		end
+		--X, Y, iRet = TLuaFuns:MsFindImgEx('SvrFill.bmp');
+		--if (X ~= -1) and  (Y ~= -1) then
+		--	TLuaFuns:MsClick(X + 70, Y + 115, 20, 10);
+		--end
 				
 		X, Y, iRet = TLuaFuns:MsFindStringEx('您选择的大区延迟过大|该服务器正在维护，无法进入|该服务器已经爆满', 'ffffff-000000');
 		if 0 == iRet then
@@ -386,7 +386,7 @@ function fnSelGameArea()
 	end
 	
 	if not bRet then
-		TLuaFuns:MsPostStatus('选择服务器超时', tsFail);
+		TLuaFuns:MsPostStatus('选择服务器超时02', tsFail);
 		return 0;
 	end
 	

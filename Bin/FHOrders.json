@@ -1,23 +1,23 @@
 {
     "orderNo": "XSSCDD20180104233328483",
-    "gameSvr": "重庆2区",
+    "gameSvr": "黑龙江1区",
     "gameArea": "电信",
     "roles": [
         {
             "checkLevel": false,            
             "safetyWay": 60,
-            "eachNum": 201,
+            "eachNum": 1,
             "reStock": -1,
-            "sendNum": 201,
+            "sendNum": 1,
             "rowId": 6600687,
-            "passWord": "aGFvZGUxNDcx",
+            "passWord": "aGFvZGUxMjM0NTY=",
             "logMsg": "",
             "stock": 208,
             "receiptLevel": 0,
-            "account": "3438993653",
-            "role": "和附加卡",
-			"receiptGameSvr": "安徽1",
-            "receiptRole": "fghrydfr-",
+            "account": "799218696",
+            "role": "v猛侠佳苑L",
+			"receiptGameSvr": "黑龙江1",
+            "receiptRole": "亡颇",
             "taskState": 15,
             "isMain": false,
             "roleID": 83007
@@ -26,6 +26,6 @@
     "taskType": 0,
     "isBusy": false,
     "consoleId": "C01",
-    "saleNum": 201,
+    "saleNum": 1,
     "key": "442166c7-75c3-44c6-b4a1-91d0311ce42b"
 }

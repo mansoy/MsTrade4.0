@@ -1139,13 +1139,18 @@ function fnInputMoney(ANum)
 				TLuaFuns:MsPostStatus('输入的金额与订单金额验证完成');
 				return 1;				
 			end
+			--TLuaFuns:MsPressKey(13);
+			--TLuaFuns:MsPressKey(10);
+			--TLuaFuns:MsSleep(100);
 		end
-		TLuaFuns:MsClick(iX + 140, iY + 6);
+		TLuaFuns:MsClick(iX + 80, iY + 6);
 		TLuaFuns:MsSleep(500);
-		TLuaFuns:MsClick(iX + 140, iY + 6);
+		TLuaFuns:MsClick(iX + 80, iY + 6);
 		TLuaFuns:MsSleep(500);
-		TLuaFuns:MsClick(iX + 100, iY + 6, 60, 1);
-		TLuaFuns:MsSleep(500);
+		for d = 1, 3 do
+			TLuaFuns:MsClick(iX + 80, iY + 6, 5, 1);
+			TLuaFuns:MsSleep(500);
+		end
 		TLuaFuns:MsPressDel(20);
 		TLuaFuns:MsSleep(500);
 		local sMoney = string.format('%d', ANum);
@@ -1287,12 +1292,15 @@ function fnCheckRoleInfo(ASendNum, IsCheckRole)
 		
 		iPosX, iPosY = TLuaFuns:MsFindStringEx('选择', 'ffffff-000000')
 		
-		if (iPosX ~= -1) and (iPosY ~= -1) then			
-			TLuaFuns:MsPressKey(13);
-			TLuaFuns:MsPressKey(10);
+		if (iPosX ~= -1) and (iPosY ~= -1) then	
+			TLuaFuns:MsPostStatus('出现了选择菜单...');
+			TLuaFuns:MsPressKey(40);
+			--TLuaFuns:MsPressKey(13);
+			--TLuaFuns:MsPressKey(10);
 			TLuaFuns:MsSleep(500);
-			TLuaFuns:MsPressKey(13);
-			TLuaFuns:MsPressKey(10)
+			TLuaFuns:MsPressKey(40);
+			--TLuaFuns:MsPressKey(13);
+			--TLuaFuns:MsPressKey(10)			
 		else
 			iPosX, iPosY = TLuaFuns:MsFindStringEx('公告', TLuaFuns:MsGetPianSe('菜单_普通标题'));
 			if (iPosX ~= -1) and (iPosY ~= -1) then
@@ -1970,15 +1978,29 @@ function Test()
 	local iY = -1; 
 	local iX = -1; 
 	local iRet = -1;
-	TLuaFuns:MsCreateBmp('该服务器已经爆满','SvrFull',255,255,255);
-	hGame = TLuaFuns:MsFindWindow('','地下城与勇士登录程序');
+	-- TLuaFuns:MsCreateBmp('我已详细阅读并同意','InLogin',255,255,255);
+	hGame = TLuaFuns:MsFindWindow('地下城与勇士','地下城与勇士');
 	if TLuaFuns:MsIsWindow(hGame) == 0 then
 		print('游戏没有打开');
 		return;
 	end
-	iX, iY = TLuaFuns:MsFindImgEx('SvrFull.bmp');
-	print(iX, iY);
-	print('设置游戏句柄完成');
+	TLuaFuns:MsSetGameHandle(hGame);
+
+	GRoleName = TOrderInfo:GetRole();
+	GTargetRoleName = TOrderInfo:GetReceiptRole();
+	GSendNum = TOrderInfo:GetSendNum()*10000; --每次交易金币数
+	GEachNum = TOrderInfo:GetEachNum();       --此任务交易次数
+	GTaskType = TOrderInfo:GetTaskType();
+	GCapturePath = TOrderInfo:GetCapturePath();
+
+	print('开始发货');
+	iRet = fnSendMail();
+
+	-- iX, iY = TLuaFuns:MsFindImgEx('InLogin.bmp');
+	-- print(iX, iY);
+	-- iX, iY = TLuaFuns:MsFindStringEx('游戏版本号', 'ffffff-000000');
+	-- print(iX, iY);
+	-- print('设置游戏句柄完成');
 end
 
 Test();

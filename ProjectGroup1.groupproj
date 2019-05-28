@@ -15,6 +15,9 @@
         <Projects Include="Console\DToolServer.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="..\QQ华夏登陆器\lander.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -59,14 +62,23 @@
     <Target Name="DToolServer:Make">
         <MSBuild Projects="Console\DToolServer.dproj" Targets="Make"/>
     </Target>
+    <Target Name="lander">
+        <MSBuild Projects="..\QQ华夏登陆器\lander.dproj"/>
+    </Target>
+    <Target Name="lander:Clean">
+        <MSBuild Projects="..\QQ华夏登陆器\lander.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="lander:Make">
+        <MSBuild Projects="..\QQ华夏登陆器\lander.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="MsDll;TradeTest;Tools;DToolServer"/>
+        <CallTarget Targets="MsDll;TradeTest;Tools;DToolServer;lander"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="MsDll:Clean;TradeTest:Clean;Tools:Clean;DToolServer:Clean"/>
+        <CallTarget Targets="MsDll:Clean;TradeTest:Clean;Tools:Clean;DToolServer:Clean;lander:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="MsDll:Make;TradeTest:Make;Tools:Make;DToolServer:Make"/>
+        <CallTarget Targets="MsDll:Make;TradeTest:Make;Tools:Make;DToolServer:Make;lander:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

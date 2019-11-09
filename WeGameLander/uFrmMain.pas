@@ -161,26 +161,26 @@ begin
         Exit;
       end;
 
-      hGame := FindWindow('TWINCONTROL', 'WeGame');
+//      hGame := FindWindow('TWINCONTROL', 'WeGame');
+//
+//      if not IsWindow(hGame) then
+//      begin
+//        MsShowMessage('«Îœ»∆Ù∂ØWeGame');
+//        Exit
+//      end;
+//
+//      if not fnCheckWeGame(hGame) then Exit;
+//
+//      vPoint.X := CON_INPUT_X;
+//      vPoint.Y := CON_INPUT_ACC_Y;
+//
+//      Winapi.Windows.ClientToScreen(hGame, vPoint);
 
-      if not IsWindow(hGame) then
-      begin
-        MsShowMessage('«Îœ»∆Ù∂ØWeGame');
-        Exit
-      end;
-
-      if not fnCheckWeGame(hGame) then Exit;
-
-      vPoint.X := CON_INPUT_X;
-      vPoint.Y := CON_INPUT_ACC_Y;
-
-      Winapi.Windows.ClientToScreen(hGame, vPoint);
-
-      for I := 0 to 3 do
-      begin
-        Sleep(50);
-        fnLeftClick(vPoint);
-      end;
+//      for I := 0 to 3 do
+//      begin
+//        Sleep(50);
+//        fnLeftClick(vPoint);
+//      end;
 
       //--…æ≥˝’À∫≈
       fnDelText();
@@ -203,7 +203,7 @@ end;
 
 procedure TFrmMain.Button1Click(Sender: TObject);
 begin
-  //Sleep(3000);
+  Sleep(3000);
   //uWinIO.IoPressPwd('Aa09137320286');
   fnLoginGame(Edit1.Text, Edit2.Text);
 //  TThread.Queue(nil,

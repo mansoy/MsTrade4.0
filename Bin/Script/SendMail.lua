@@ -1968,8 +1968,8 @@ function fnDispatchOrder()
 	return iRet;
 end
 
-fnDispatchOrder();
---[[
+--fnDispatchOrder();
+
 function Test()
 	print('开始测试...');
 	--os.execute("start IoPress.exe 1 a2V5YX4hQCMkfiUkfiVeKiYoKCkpeWEiOiIuPzwvLg==");
@@ -1978,30 +1978,7 @@ function Test()
 	local iY = -1; 
 	local iX = -1; 
 	local iRet = -1;
-	-- TLuaFuns:MsCreateBmp('我已详细阅读并同意','InLogin',255,255,255);
-	hGame = TLuaFuns:MsFindWindow('地下城与勇士','地下城与勇士');
-	if TLuaFuns:MsIsWindow(hGame) == 0 then
-		print('游戏没有打开');
-		return;
-	end
-	TLuaFuns:MsSetGameHandle(hGame);
-
-	GRoleName = TOrderInfo:GetRole();
-	GTargetRoleName = TOrderInfo:GetReceiptRole();
-	GSendNum = TOrderInfo:GetSendNum()*10000; --每次交易金币数
-	GEachNum = TOrderInfo:GetEachNum();       --此任务交易次数
-	GTaskType = TOrderInfo:GetTaskType();
-	GCapturePath = TOrderInfo:GetCapturePath();
-
-	print('开始发货');
-	iRet = fnSendMail();
-
-	-- iX, iY = TLuaFuns:MsFindImgEx('InLogin.bmp');
-	-- print(iX, iY);
-	-- iX, iY = TLuaFuns:MsFindStringEx('游戏版本号', 'ffffff-000000');
-	-- print(iX, iY);
-	-- print('设置游戏句柄完成');
+	TLuaFuns:MsCreateBmp('击杀练功房','a1',255,255,0);
 end
 
 Test();
---]]
